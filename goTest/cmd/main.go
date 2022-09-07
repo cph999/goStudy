@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/garyburd/redigo/redis"
 	_ "github.com/garyburd/redigo/redis"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
+	_ "net/http"
 )
 
 type Person struct {
@@ -57,13 +57,14 @@ func main() {
 	//	fmt.Println(p)
 	//}
 
-	c, err := redis.Dial("tcp", "121.196.223.94:6379")
-	if err != nil {
-		fmt.Println("conn redis failed,", err)
-		return
-	}
+	//c, err := redis.Dial("tcp", "121.196.223.94:6379")
+	//if err != nil {
+	//	fmt.Println("conn redis failed,", err)
+	//	return
+	//}
+	//
+	//fmt.Println("redis conn success")
+	//
+	//defer c.Close()
 
-	fmt.Println("redis conn success")
-
-	defer c.Close()
 }
