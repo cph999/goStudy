@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -39,6 +40,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
+	fmt.Println(os.Args)
 	body := bodyFrom(os.Args)
 	err = ch.PublishWithContext(ctx,
 		"logs_topic",          // exchange
