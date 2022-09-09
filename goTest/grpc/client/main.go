@@ -22,14 +22,13 @@ func main() {
 	}
 	defer conn.Close()
 
-	fmt.Println("coming")
 	// 初始化客户端
 	c := hello.NewHelloClient(conn)
 
 	// 调用方法
-	req := &hello.HelloRequest{Name: "gRPC"}
+	req := &hello.HelloRequest{Name: "gRPC巴嘎"}
 	res, err := c.SayHello(context.Background(), req)
-	fmt.Println(res, "dasdsa")
+	fmt.Println(res)
 	if err != nil {
 		grpclog.Fatalln(err)
 	}
