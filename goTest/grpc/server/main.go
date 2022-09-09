@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"net"
-
-	pb "" // 引入编译生成的包
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
+	"gotest/grpc/hello"
+	"net"
 )
 
 const (
@@ -22,8 +21,8 @@ type helloService struct{}
 var HelloService = helloService{}
 
 // SayHello 实现Hello服务接口
-func (h helloService) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloResponse, error) {
-	resp := new(pb.HelloResponse)
+func (h helloService) SayHello(ctx context.Context, in *hello.HelloRequest) (*hello.HelloResponse, error) {
+	resp := new(hello.HelloResponse)
 	resp.Message = fmt.Sprintf("Hello %s.", in.Name)
 
 	return resp, nil
@@ -39,8 +38,10 @@ func main() {
 	s := grpc.NewServer()
 
 	// 注册HelloService
-	pb.RegisterHelloServer(s, HelloService)
+	hello.RegisterHelloServer(s, HelloService)
 
-	grpclog.Println("Listen on " + Address)
-	s.Serve(listen)
+	err = s.Serve(listen)
+	if err != nil {
+		return
+	}
 }
