@@ -9,8 +9,10 @@ require (
 	github.com/hashicorp/consul/api v1.14.0
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/jung-kurt/gofpdf v1.16.2
-	github.com/micro/micro/v2 v2.9.3 // indirect
+	github.com/lib/pq v1.3.0 // indirect
+	github.com/panjf2000/ants v1.3.0
 	github.com/rabbitmq/amqp091-go v1.4.0
+	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
 	golang.org/x/net v0.0.0-20211216030914-fe4d6282115f
 	google.golang.org/grpc v1.49.0
 	google.golang.org/protobuf v1.28.1
